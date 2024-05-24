@@ -38,37 +38,25 @@ public class Koszyk {
         koszyk_zak.sort(comparator);
         return koszyk_zak;
     }
+    Comparator<Product> asc = Comparator.comparingDouble(Product::getPrice);
+    Comparator<Product> dsc = (p1, p2) -> Double.compare(p2.getPrice(), p1.getPrice());
+    Comparator<Product> alpAsc = Comparator.comparing(Product::getName);
+    Comparator<Product> alpDsc = (p1, p2) -> p2.getName().compareTo(p1.getName());
 
-
-}
-Comparator<Product> asc = new Comparator<Product>() {
-    public int compare(Product p1, Product p2) {
-        return Double.compare(p1.getPrice(), p2.getPrice());
+    public List<Product> sortAsc(){
+        koszyk_zak.sort(asc);
+        return koszyk_zak;
     }
-};
-Comparator<Product> dsc = new Comparator<Product>() {
-    public int compare(Product p1, Product p2) {
-        return Double.compare(p2.getPrice(), p1.getPrice());
+    public List<Product> sortDsc(){
+        koszyk_zak.sort(dsc);
+        return koszyk_zak;
     }
-};
-
-abstract class sortUp implements Comparator<Product> {
-    public int compare(Product p1, Product p2) {
-        return (int)(p1.getPrice() - p2.getPrice());
+    public List<Product> sortAlpAsc(){
+        koszyk_zak.sort(alpAsc);
+        return koszyk_zak;
     }
-}
-abstract class sortDown implements Comparator<Product> {
-    public int compare(Product p1, Product p2) {
-        return (int)(p2.getPrice() - p1.getPrice());
-    }
-}
-class sortAphUp implements Comparator<Product> {
-    public int compare(Product p1, Product p2) {
-        return p1.getName().compareTo(p2.getName());
-    }
-}
-abstract class sortAphDown implements Comparator<Product> {
-    public int compare(Product p1, Product p2) {
-        return p2.getName().compareTo(p1.getName());
+    public List<Product> sortAlpDsc(){
+        koszyk_zak.sort(alpDsc);
+        return koszyk_zak;
     }
 }
