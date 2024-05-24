@@ -1,5 +1,6 @@
 package main;
 
+
 public class Product {
     private int id;
     private String name;
@@ -41,23 +42,25 @@ public class Product {
         return discountPrice;
     }
     public void setDiscountPrice(double discountPrice) {
-        if (discountChecker()) {
+        if (discountChecker(discountPrice)) {
             this.discountPrice = discountPrice;
             checkPrice();
+        } else {
+            this.discountPrice = price;
         }
-        this.discountPrice = price;
     }
-    private boolean discountChecker() {
-        if (discountPrice <= 0) {
-            return false;
-        }
-        return true;
+    private boolean discountChecker(double discountPrice) {
+
+        return !(discountPrice <= 0);
     }
     private void checkPrice() {
         if (price <= 0) {
             throw new IllegalArgumentException("Price must be greater than 0");
-        } else if (price < discountPrice) {
-            this.price = discountPrice;
+        } else if (discountPrice < price) {
+            price = discountPrice;
         }
+    }
+    public String toString() {
+        return id + " " + name + " " + price;
     }
 }
