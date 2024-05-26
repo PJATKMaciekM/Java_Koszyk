@@ -9,7 +9,7 @@ public class Product_Test {
     private Product product;
     @BeforeEach
     void setUp() {
-        product = new Product(1, "Ser", 5.99);
+        product = new Product("1", "Ser", 5.99);
     }
 
     @Test
@@ -18,8 +18,8 @@ public class Product_Test {
     }
     @Test
     void testSetId() {
-        product.setId(2);
-        assertEquals(2, product.getId());
+        product.setId("2");
+        assertEquals("2", product.getId());
     }
     @Test
     void testSetPrice() {
@@ -36,7 +36,7 @@ public class Product_Test {
     @Test
     void testSetDiscountPrice_right() {
         product.setDiscountPrice(3.99);
-        assertEquals(3.99, product.getPrice());
+        assertEquals(3.99, product.getDiscountPrice());
     }
 }
 

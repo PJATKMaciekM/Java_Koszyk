@@ -2,27 +2,34 @@ package main;
 
 
 public class Product {
-    private int id;
+    private String id;
     private String name;
     private double price;
     private double discountPrice;
-    public Product(int id, String name, double price, double discountPrice) {
+    private boolean free;
+    public Product(String id, String name, double price, double discountPrice) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.discountPrice = discountPrice;
         checkPrice();
     }
-    public Product(int id, String name, double price) {
+    public Product(String id, String name, double price) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.discountPrice = price;
+    }
+    public Product(String id, String name, boolean free) {
+        this.id = id;
+        this.name = name;
+        if(free){this.discountPrice = 0;}
     }
     public Product() {}
-    public int getId() {
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getName() {
@@ -37,6 +44,15 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
         checkPrice();
+    }
+    public boolean isFree() {
+        return free;
+    }
+    public void setFree(boolean free) {
+        this.free = free;
+        if(free) {
+            this.discountPrice = 0;
+        }
     }
     public double getDiscountPrice() {
         return discountPrice;
@@ -56,8 +72,6 @@ public class Product {
     private void checkPrice() {
         if (price <= 0) {
             throw new IllegalArgumentException("Price must be greater than 0");
-        } else if (discountPrice < price) {
-            price = discountPrice;
         }
     }
     public String toString() {

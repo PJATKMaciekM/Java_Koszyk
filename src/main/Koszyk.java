@@ -11,6 +11,9 @@ public class Koszyk {
         koszyk_zak = new ArrayList<Product>();
         count = 0;
     }
+    public Koszyk(Koszyk koszyk_bcp) {
+        this.koszyk_zak = koszyk_bcp.koszyk_zak;
+    }
     public void appendProduct(Product product){
         koszyk_zak.add(product);
         count++;
@@ -30,7 +33,7 @@ public class Koszyk {
     public double getSum() {
         double sum = 0;
         for(int i=0; i<count; i++){
-            sum += koszyk_zak.get(i).getPrice();
+            sum += koszyk_zak.get(i).getDiscountPrice();
         }
         return sum;
     }

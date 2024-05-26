@@ -18,34 +18,34 @@ public class Sorter_Test {
     @BeforeEach
     void setUp() {
         koszyk_zak = new Koszyk();
-        product = new Product(0, "Ser", 5.99);
+        product = new Product("0", "Ser", 5.99);
         koszyk_zak.appendProduct(product);
-        product = new Product(1, "Maslo", 7.62);
+        product = new Product("1", "Maslo", 7.62);
         koszyk_zak.appendProduct(product);
-        product = new Product(2, "Mleko", 2);
+        product = new Product("2", "Mleko", 2);
         koszyk_zak.appendProduct(product);
     }
     @Test
     void sortasc_Test() {
-        List<Product> expected = Arrays.asList(new Product(2, "Mleko", 2),new Product(0, "Ser", 5.99), new Product(1, "Maslo", 7.62));
+        List<Product> expected = Arrays.asList(new Product("2", "Mleko", 2),new Product("0", "Ser", 5.99), new Product("1", "Maslo", 7.62));
         List<Product> actual = koszyk_zak.sortAsc();
         assertEquals(expected.toString(), actual.toString());
     }
     @Test
     void sortdsc_Test() {
-        List<Product> expected = Arrays.asList(new Product(1, "Maslo", 7.62),new Product(0, "Ser", 5.99),new Product(2, "Mleko", 2));
+        List<Product> expected = Arrays.asList(new Product("1", "Maslo", 7.62),new Product("0", "Ser", 5.99),new Product("2", "Mleko", 2));
         List<Product> actual = koszyk_zak.sortDsc();
         assertEquals(expected.toString(), actual.toString());
     }
     @Test
     void sortalpAsc_Test() {
-        List<Product> expected = Arrays.asList(new Product(1, "Maslo", 7.62),new Product(2, "Mleko", 2),new Product(0, "Ser", 5.99));
+        List<Product> expected = Arrays.asList(new Product("1", "Maslo", 7.62),new Product("2", "Mleko", 2),new Product("0", "Ser", 5.99));
         List<Product> actual = koszyk_zak.sortAlpAsc();
         assertEquals(expected.toString(), actual.toString());
     }
     @Test
     void sortalpDsc_Test() {
-        List<Product> expected = Arrays.asList(new Product(0, "Ser", 5.99),new Product(2, "Mleko", 2),new Product(1, "Maslo", 7.62));
+        List<Product> expected = Arrays.asList(new Product("0", "Ser", 5.99),new Product("2", "Mleko", 2),new Product("1", "Maslo", 7.62));
         List<Product> actual = koszyk_zak.sortAlpDsc();
         assertEquals(expected.toString(), actual.toString());
     }
@@ -56,7 +56,7 @@ public class Sorter_Test {
     }
     @Test
     void find2Cheap_Test() {
-        List<Product> expected = Arrays.asList(new Product(2, "Mleko", 2),new Product(0, "Ser", 5.99));
+        List<Product> expected = Arrays.asList(new Product("2", "Mleko", 2),new Product("0", "Ser", 5.99));
         koszyk_zak.sortAsc();
         assertEquals(expected.toString(), koszyk_zak.getProducts(2).toString());
     }
@@ -67,7 +67,7 @@ public class Sorter_Test {
     }
     @Test
     void find2Exp_Test() {
-        List<Product> expected = Arrays.asList(new Product(1, "Maslo", 7.62), new Product(0, "Ser", 5.99));
+        List<Product> expected = Arrays.asList(new Product("1", "Maslo", 7.62), new Product("0", "Ser", 5.99));
         koszyk_zak.sortDsc();
         assertEquals(expected.toString(), koszyk_zak.getProducts(2).toString());
     }
