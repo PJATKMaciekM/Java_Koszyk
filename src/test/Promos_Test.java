@@ -3,6 +3,7 @@ package test;
 import main.Koszyk;
 import main.Product;
 import main.Promotions.*;
+import main.Sorters.Ascending;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,6 +16,7 @@ public class Promos_Test {
     private Coupon30off coupon30off;
     private GetOneFree getOneFree;
     private CouponMinus couponMinus;
+    private Ascending ascending;
     @BeforeEach
     void setUp() {
         koszyk_zak = new Koszyk();
@@ -29,6 +31,7 @@ public class Promos_Test {
         coupon30off = new Coupon30off(koszyk_zak);
         getOneFree = new GetOneFree(koszyk_zak);
         couponMinus = new CouponMinus(koszyk_zak);
+        ascending = new Ascending();
     }
     @Test
     void testdisc5() {
@@ -38,7 +41,7 @@ public class Promos_Test {
     @Test
     void testmugFree() {
         mugFree.implement();
-        koszyk_zak.sortAsc();
+        koszyk_zak.sort(ascending);
         assertEquals("Firmowy Kubek", koszyk_zak.getProduct(0).getName());
     }
     @Test

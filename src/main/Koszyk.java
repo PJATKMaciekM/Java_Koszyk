@@ -41,25 +41,4 @@ public class Koszyk {
         koszyk_zak.sort(comparator);
         return koszyk_zak;
     }
-    Comparator<Product> asc = Comparator.comparingDouble(Product::getPrice);
-    Comparator<Product> dsc = (p1, p2) -> Double.compare(p2.getPrice(), p1.getPrice());
-    Comparator<Product> alpAsc = Comparator.comparing(Product::getName);
-    Comparator<Product> alpDsc = (p1, p2) -> p2.getName().compareTo(p1.getName());
-
-    public List<Product> sortAsc(){
-        koszyk_zak.sort(asc);
-        return koszyk_zak;
-    }
-    public List<Product> sortDsc(){
-        koszyk_zak.sort(dsc);
-        return koszyk_zak;
-    }
-    public List<Product> sortAlpAsc(){
-        koszyk_zak.sort(alpAsc);
-        return koszyk_zak;
-    }
-    public List<Product> sortAlpDsc(){
-        koszyk_zak.sort(alpDsc);
-        return koszyk_zak;
-    }
 }

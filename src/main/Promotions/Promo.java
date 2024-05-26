@@ -5,7 +5,7 @@ import main.Product;
 
 public abstract class Promo {
     public Koszyk koszyk;
-    protected Koszyk backup;
+    public Koszyk backup;
     public Product product;
 
     Promo(Koszyk koszyk) {
